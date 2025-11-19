@@ -1,6 +1,10 @@
 import { Restaurant, Deal, RestaurantWithBestDeal } from '@/data/types'
 
 export const getBestDeal = (restaurant: Restaurant): Deal => {
+    if (restaurant.deals.length === 0) {
+        throw new Error('Restaurant has no deals')
+    }
+
     const sortedDeals = [...restaurant.deals].sort((a, b) => {
         if (a.lightning !== b.lightning) {
             return a.lightning === 'true' ? -1 : 1
@@ -18,6 +22,10 @@ export const getBestDeal = (restaurant: Restaurant): Deal => {
 export const sortRestaurantsByBestDeal = (
     restaurants: Restaurant[]
 ): RestaurantWithBestDeal[] => {
+    if (restaurants.length === 0) {
+        return []
+    }
+
     const restaurantsWithBestDeal = restaurants.map((restaurant) => ({
         ...restaurant,
         bestDeal: getBestDeal(restaurant),
@@ -39,6 +47,10 @@ export const sortRestaurantsByBestDeal = (
 }
 
 export const sortDealsByDiscount = (deals: Deal[]): Deal[] => {
+    if (deals.length === 0) {
+        return []
+    }
+
     return [...deals].sort((a, b) => {
         return Number(b.discount) - Number(a.discount)
     })

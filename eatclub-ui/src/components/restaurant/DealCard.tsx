@@ -1,4 +1,5 @@
 import { Deal } from '@/data/types'
+import { formatDealTimeWithPrefix } from '@/utils'
 import './DealCard.css'
 
 interface DealCardProps {
@@ -6,12 +7,7 @@ interface DealCardProps {
 }
 
 export const DealCard = ({ deal }: DealCardProps) => {
-    const dealTime =
-        deal.open && deal.close
-            ? `Between ${deal.open} - ${deal.close}`
-            : deal.start && deal.end
-            ? `Between ${deal.start} - ${deal.end}`
-            : 'Anytime today'
+const dealTime = formatDealTimeWithPrefix(deal);
 
     return (
         <div className="deal-card">

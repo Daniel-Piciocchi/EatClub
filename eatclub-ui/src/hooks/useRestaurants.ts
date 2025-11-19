@@ -11,5 +11,9 @@ export const useRestaurants = () => {
         }
     }, [restaurants.length, isLoading, error, fetchRestaurants])
 
-    return { restaurants, isLoading, error }
+    const validRestaurants = restaurants.filter(
+        (r) => r.deals && r.deals.length > 0
+    )
+
+    return { restaurants: validRestaurants, isLoading, error }
 }

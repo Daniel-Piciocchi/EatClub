@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import { RestaurantWithBestDeal } from '@/data/types'
+import { formatDealTime } from '@/utils'
 import './RestaurantCard.css'
 
 interface RestaurantCardProps {
@@ -15,10 +16,7 @@ export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
         router.push(`/restaurant/${restaurant.objectId}`)
     }
 
-    const dealTime =
-        restaurant.bestDeal.open && restaurant.bestDeal.close
-            ? `${restaurant.bestDeal.open} - ${restaurant.bestDeal.close}`
-            : 'Anytime today'
+    const dealTime = formatDealTime(restaurant.bestDeal)
 
     return (
         <div className="restaurant-card" onClick={handleClick}>
