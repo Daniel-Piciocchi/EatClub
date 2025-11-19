@@ -1,4 +1,5 @@
 import { Deal } from '@/data/types'
+import './DealCard.css'
 
 interface DealCardProps {
     deal: Deal
@@ -7,64 +8,45 @@ interface DealCardProps {
 export const DealCard = ({ deal }: DealCardProps) => {
     const dealTime =
         deal.open && deal.close
-            ? `${deal.open} - ${deal.close}`
+            ? `Between ${deal.open} - ${deal.close}`
             : deal.start && deal.end
-            ? `${deal.start} - ${deal.end}`
+            ? `Between ${deal.start} - ${deal.end}`
             : 'Anytime today'
 
     return (
-        <div
-            style={{
-                border: '1px solid #ccc',
-                padding: '16px',
-                marginBottom: '16px',
-                borderRadius: '8px',
-            }}
-        >
-            <div
-                style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: '8px',
-                }}
-            >
-                <div>
+        <div className="deal-card">
+            <div className="deal-card-header">
+                <div className="deal-card-discount-section">
                     {deal.lightning === 'true' && (
-                        <span
-                            style={{
-                                backgroundColor: '#ff6b6b',
-                                color: 'white',
-                                padding: '4px 8px',
-                                borderRadius: '4px',
-                                fontSize: '12px',
-                                marginRight: '8px',
-                            }}
-                        >
+                        <span className="deal-lightning-badge">
                             ⚡ Lightning Deal
                         </span>
                     )}
-                    <span
-                        style={{
-                            fontSize: '24px',
-                            fontWeight: 'bold',
-                            color: '#e63946',
-                        }}
-                    >
+                    <span className="deal-discount-text">
                         {deal.discount}% Off
                     </span>
                 </div>
             </div>
 
-            <p style={{ color: '#666', marginBottom: '4px' }}>
-                {deal.dineIn === 'true' ? '🍽️ Dine In' : '🥡 Takeaway'}
-            </p>
+            <div className="deal-card-details">
+                <div className="deal-detail-row">
+                    <span className="deal-detail-icon">
+                        {deal.dineIn === 'true' ? '🍽️' : '🥡'}
+                    </span>
+                    <span>
+                        {deal.dineIn === 'true' ? 'Dine In' : 'Takeaway'}
+                    </span>
+                </div>
 
-            <p style={{ color: '#666', marginBottom: '4px' }}>⏰ {dealTime}</p>
+                <div className="deal-detail-row">
+                    <span className="deal-detail-icon">⏰</span>
+                    <span className="deal-time-text">{dealTime}</span>
+                </div>
 
-            <p style={{ color: '#666', fontSize: '14px' }}>
-                {deal.qtyLeft} deals remaining
-            </p>
+                <p className="deal-quantity">{deal.qtyLeft} Deals Left</p>
+            </div>
+
+            <button className="deal-redeem-button">Redeem</button>
         </div>
     )
 }
