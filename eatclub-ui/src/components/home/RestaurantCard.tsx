@@ -50,22 +50,6 @@ export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
                 <p className="restaurant-card-cuisines">
                     {restaurant.cuisines.join(', ')}
                 </p>
-
-                <div className="restaurant-card-footer">
-                    <div className="restaurant-card-deal-info">
-                        {restaurant.bestDeal.lightning === 'true' && (
-                            <span className="lightning-badge">
-                                ⚡ Lightning
-                            </span>
-                        )}
-                        <span className="deal-discount">
-                            {restaurant.bestDeal.discount}% Off
-                        </span>
-                    </div>
-                    <span className="deals-left">
-                        {restaurant.bestDeal.qtyLeft} deals left
-                    </span>
-                </div>
             </div>
         </div>
     )
