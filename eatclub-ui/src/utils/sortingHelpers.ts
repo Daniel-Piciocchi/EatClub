@@ -37,3 +37,9 @@ export const sortRestaurantsByBestDeal = (
         return Number(dealB.qtyLeft) - Number(dealA.qtyLeft)
     })
 }
+
+export const sortDealsByDiscount = (deals: Deal[]): Deal[] => {
+    return [...deals].sort((a, b) => {
+        return Number(b.discount) - Number(a.discount)
+    })
+}
