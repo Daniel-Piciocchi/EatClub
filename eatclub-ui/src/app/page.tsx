@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import { useRestaurants } from '@/hooks'
-import { LoadingScreen } from '@/components/common'
+import { LoadingScreen, Logo } from '@/components/common'
 import { RestaurantCard, SearchFilter } from '@/components/home'
 import { sortRestaurantsByBestDeal, filterRestaurants } from '@/utils'
 import './page.css'
@@ -32,7 +32,7 @@ export default function HomePage() {
         <div className="home-page">
             <div className="home-container">
                 <div className="home-header">
-                    <h1 className="home-title">Restaurant Deals</h1>
+                    <Logo />
                 </div>
 
                 <SearchFilter
