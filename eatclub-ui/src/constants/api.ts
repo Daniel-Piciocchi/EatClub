@@ -1,1 +1,1 @@
-export const API_URL = 'https://eccdn.com.au/misc/challengedata.json';
+export const API_URL = '/api/restaurants'
