@@ -3,15 +3,18 @@ import { Restaurant, RestaurantsApiResponse } from '@/data/types'
 import { API_URL } from '@/constants'
 
 interface RestaurantStore {
-    restaurants: Restaurant[]
+    restaurantsById: Record<string, Restaurant>
+    restaurantIds: string[]
     isLoading: boolean
     error: string | null
     fetchRestaurants: () => Promise<void>
     getRestaurantById: (id: string) => Restaurant | undefined
+    getAllRestaurants: () => Restaurant[]
 }
 
 export const useRestaurantStore = create<RestaurantStore>((set, get) => ({
-    restaurants: [],
+    restaurantsById: {},
+    restaurantIds: [],
     isLoading: false,
     error: null,
 
@@ -26,7 +29,20 @@ export const useRestaurantStore = create<RestaurantStore>((set, get) => ({
                 throw new Error('Failed to fetch restaurants')
             }
             const data: RestaurantsApiResponse = await response.json()
-            set({ restaurants: data.restaurants, isLoading: false })
+
+            const restaurantsById: Record<string, Restaurant> = {}
+            const restaurantIds: string[] = []
+
+            data.restaurants.forEach((restaurant) => {
+                restaurantsById[restaurant.objectId] = restaurant
+                restaurantIds.push(restaurant.objectId)
+            })
+
+            set({
+                restaurantsById,
+                restaurantIds,
+                isLoading: false,
+            })
         } catch (error) {
             set({
                 error:
@@ -39,8 +55,11 @@ export const useRestaurantStore = create<RestaurantStore>((set, get) => ({
     },
 
     getRestaurantById: (id: string) => {
-        return get().restaurants.find(
-            (restaurant) => restaurant.objectId === id
-        )
+        return get().restaurantsById[id]
+    },
+
+    getAllRestaurants: () => {
+        const { restaurantsById, restaurantIds } = get()
+        return restaurantIds.map((id) => restaurantsById[id])
     },
 }))
