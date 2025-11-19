@@ -107,3 +107,43 @@
         padding: 32px;
     }
 }
+
+.restaurant-detail-page {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.restaurant-detail-image {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.restaurant-detail-content {
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.back-button {
+    transition: all 0.2s ease;
+}
+
+.back-button:active {
+    transform: translateX(-4px);
+}
