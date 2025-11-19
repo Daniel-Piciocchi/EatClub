@@ -5,6 +5,7 @@ import { useRestaurants } from '@/hooks'
 import { LoadingScreen } from '@/components/common'
 import { RestaurantCard, SearchFilter } from '@/components/home'
 import { sortRestaurantsByBestDeal, filterRestaurants } from '@/utils'
+import './page.css'
 
 export default function HomePage() {
     const { restaurants, isLoading, error } = useRestaurants()
@@ -20,30 +21,40 @@ export default function HomePage() {
     }
 
     if (error) {
-        return <div>Error: {error}</div>
+        return (
+            <div className="home-page">
+                <div className="error-message">Error: {error}</div>
+            </div>
+        )
     }
 
     return (
-        <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
-            <h1 style={{ marginBottom: '24px' }}>Restaurant Deals</h1>
-
-            <SearchFilter
-                searchQuery={searchQuery}
-                onSearchChange={setSearchQuery}
-            />
-
-            {filteredAndSortedRestaurants.length === 0 ? (
-                <p>No restaurants found matching your search.</p>
-            ) : (
-                <div>
-                    {filteredAndSortedRestaurants.map((restaurant) => (
-                        <RestaurantCard
-                            key={restaurant.objectId}
-                            restaurant={restaurant}
-                        />
-                    ))}
+        <div className="home-page">
+            <div className="home-container">
+                <div className="home-header">
+                    <h1 className="home-title">Restaurant Deals</h1>
                 </div>
-            )}
+
+                <SearchFilter
+                    searchQuery={searchQuery}
+                    onSearchChange={setSearchQuery}
+                />
+
+                {filteredAndSortedRestaurants.length === 0 ? (
+                    <p className="no-results">
+                        No restaurants found matching your search.
+                    </p>
+                ) : (
+                    <div className="restaurants-grid">
+                        {filteredAndSortedRestaurants.map((restaurant) => (
+                            <RestaurantCard
+                                key={restaurant.objectId}
+                                restaurant={restaurant}
+                            />
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
     )
 }
