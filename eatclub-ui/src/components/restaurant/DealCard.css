@@ -1,0 +1,173 @@
+.deal-card {
+    background: white;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.deal-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.deal-card-discount-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.deal-lightning-badge {
+    background: #ff6b6b;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.deal-discount-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #e63946;
+}
+
+.deal-card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.deal-card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.deal-detail-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.deal-detail-icon {
+    color: #666;
+    flex-shrink: 0;
+}
+
+.deal-time-text {
+    color: #666;
+    font-size: 14px;
+}
+
+.deal-quantity {
+    color: #999;
+    font-size: 13px;
+    margin: 0;
+}
+
+.deal-redeem-button {
+    padding: 10px 24px;
+    border: 2px solid #e63946;
+    background: white;
+    color: #e63946;
+    border-radius: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.deal-redeem-button:hover {
+    background: #e63946;
+    color: white;
+}
+
+.deal-redeem-button:active {
+    transform: scale(0.98);
+}
+
+.restaurant-card {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lightning-badge {
+    animation: pulse-lightning 2s ease-in-out infinite;
+}
+
+@keyframes pulse-lightning {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.restaurant-card-deal-badge {
+    animation: slideInLeft 0.4s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.deal-card {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.deal-lightning-badge {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 6px rgba(255, 107, 107, 0);
+    }
+}
+
+@media (max-width: 480px) {
+    .deal-card-body {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .deal-redeem-button {
+        width: 100%;
+    }
+}
