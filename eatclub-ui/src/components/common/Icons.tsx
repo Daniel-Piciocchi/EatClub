@@ -1,4 +1,4 @@
-export const LocationIcon = ({ className = '' }: { className?: string }) => (
+export const AddressIcon = ({ className = '' }: { className?: string }) => (
     <svg
         className={className}
         width="16"
@@ -10,6 +10,34 @@ export const LocationIcon = ({ className = '' }: { className?: string }) => (
         <path
             d="M8 0C5.243 0 3 2.243 3 5c0 3.5 5 11 5 11s5-7.5 5-11c0-2.757-2.243-5-5-5zm0 7.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"
             fill="currentColor"
+        />
+    </svg>
+)
+
+export const LocationIcon = ({ className = '' }: { className?: string }) => (
+    <svg
+        className={className}
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <circle
+            cx="12"
+            cy="10"
+            r="3"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />
     </svg>
 )
@@ -84,18 +112,109 @@ export const CuisineIcon = ({ className = '' }: { className?: string }) => (
 export const ArrowLeftIcon = ({ className = '' }: { className?: string }) => (
     <svg
         className={className}
-        width="20"
-        height="20"
-        viewBox="0 0 20 20"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
     >
         <path
-            d="M12 4l-8 6 8 6"
+            d="M19 12H5M5 12L12 19M5 12L12 5"
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
+        />
+    </svg>
+)
+
+export const MenuIcon = ({ className = '' }: { className?: string }) => (
+    <svg
+        className={className}
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M9 3H5C3.89543 3 3 3.89543 3 5V9C3 10.1046 3.89543 11 5 11H9C10.1046 11 11 10.1046 11 9V5C11 3.89543 10.1046 3 9 3Z"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <path
+            d="M9 13H5C3.89543 13 3 13.8954 3 15V19C3 20.1046 3.89543 21 5 21H9C10.1046 21 11 20.1046 11 19V15C11 13.8954 10.1046 13 9 13Z"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <path
+            d="M14 5H21M14 9H21M14 15H21M14 19H21"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+)
+
+export const PhoneIcon = ({ className = '' }: { className?: string }) => (
+    <svg
+        className={className}
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+)
+
+export const HeartIcon = ({ className = '' }: { className?: string }) => (
+    <svg
+        className={className}
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+)
+
+export const TakeawayIcon = ({ className = '' }: { className?: string }) => (
+    <svg
+        className={className}
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M3 4l1.5 9h7L13 4H3zm1.8 1h6.4l-1.2 7H6l-1.2-7z"
+            fill="currentColor"
+        />
+        <path
+            d="M4 2h8v1H4V2zM5.5 14a1 1 0 100 2 1 1 0 000-2zm5 0a1 1 0 100 2 1 1 0 000-2z"
+            fill="currentColor"
         />
     </svg>
 )

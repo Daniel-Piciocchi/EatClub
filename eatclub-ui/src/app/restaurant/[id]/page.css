@@ -24,6 +24,12 @@
     border-radius: 12px;
 }
 
+.deal-separator {
+    height: 1px;
+    background: #d0d0d0;
+    margin: 0;
+}
+
 .back-button {
     background: transparent;
     border: none;
@@ -60,6 +66,42 @@
     display: block;
 }
 
+.restaurant-action-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-bottom: 1px solid #d0d0d0;
+    background: white;
+}
+
+.action-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #666;
+    font-size: 12px;
+}
+
+.action-button:last-child {
+    border-right: none;
+}
+
+.action-button:hover {
+    background: #f9f9f9;
+    color: #e63946;
+}
+
+.action-button:active {
+    transform: scale(0.98);
+}
+
 .restaurant-detail-content {
     padding: 24px 20px;
 }
@@ -78,14 +120,14 @@
 
 .restaurant-detail-cuisines {
     font-size: 16px;
-    color: #666;
+    color: #999;
     margin: 0 0 20px 0;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .restaurant-detail-divider {
     height: 1px;
-    background: #e0e0e0;
+    background: #e5e7eb;
     margin: 20px 0;
 }
 
@@ -98,9 +140,19 @@
 
 .restaurant-info-text {
     font-size: 14px;
-    color: #666;
+    color: #1a1a1a;
+    font-weight: 600;
     margin: 0;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.info-icon {
+    color: #666;
+    flex-shrink: 0;
 }
 
 .deals-section-title {
@@ -133,5 +185,12 @@
 
     .restaurant-detail-content {
         padding: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .action-button {
+        font-size: 11px;
+        padding: 12px 6px;
     }
 }

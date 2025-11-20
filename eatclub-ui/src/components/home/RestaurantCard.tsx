@@ -18,6 +18,21 @@ export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
 
     const dealTime = formatDealTime(restaurant.bestDeal)
 
+    // Check what dining options are available
+    const hasDineIn = restaurant.deals.some((deal) => deal.dineIn === 'true')
+    const hasTakeaway = restaurant.deals.some((deal) => deal.dineIn === 'false')
+
+    const getDiningOptions = () => {
+        if (hasDineIn && hasTakeaway) {
+            return 'Dine In • Takeaway'
+        } else if (hasDineIn) {
+            return 'Dine In'
+        } else if (hasTakeaway) {
+            return 'Takeaway'
+        }
+        return ''
+    }
+
     return (
         <div className="restaurant-card" onClick={handleClick}>
             <div className="restaurant-card-image-container">
@@ -50,6 +65,12 @@ export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
                 <p className="restaurant-card-cuisines">
                     {restaurant.cuisines.join(', ')}
                 </p>
+
+                {getDiningOptions() && (
+                    <p className="restaurant-card-dining-options">
+                        {getDiningOptions()}
+                    </p>
+                )}
             </div>
         </div>
     )

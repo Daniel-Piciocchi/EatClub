@@ -1,14 +1,9 @@
 .deal-card {
     background: white;
-    border: 1px solid #e0e0e0;
+    border: none;
     border-radius: 12px;
     padding: 16px;
     margin-bottom: 16px;
-    transition: box-shadow 0.2s;
-}
-
-.deal-card:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .deal-card-header {
@@ -43,10 +38,18 @@
     color: #e63946;
 }
 
+.deal-card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
 .deal-card-details {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    flex: 1;
 }
 
 .deal-detail-row {
@@ -58,7 +61,8 @@
 }
 
 .deal-detail-icon {
-    font-size: 16px;
+    color: #666;
+    flex-shrink: 0;
 }
 
 .deal-time-text {
@@ -69,11 +73,10 @@
 .deal-quantity {
     color: #999;
     font-size: 13px;
-    margin-top: 4px;
+    margin: 0;
 }
 
 .deal-redeem-button {
-    margin-top: 12px;
     padding: 10px 24px;
     border: 2px solid #e63946;
     background: white;
@@ -83,11 +86,17 @@
     cursor: pointer;
     transition: all 0.2s;
     font-size: 14px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .deal-redeem-button:hover {
     background: #e63946;
     color: white;
+}
+
+.deal-redeem-button:active {
+    transform: scale(0.98);
 }
 
 .restaurant-card {
@@ -138,17 +147,6 @@
     animation: fadeInUp 0.4s ease-out;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .deal-lightning-badge {
     animation: pulse-glow 2s ease-in-out infinite;
 }
@@ -163,6 +161,13 @@
     }
 }
 
-.deal-redeem-button:active {
-    transform: scale(0.98);
+@media (max-width: 480px) {
+    .deal-card-body {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .deal-redeem-button {
+        width: 100%;
+    }
 }

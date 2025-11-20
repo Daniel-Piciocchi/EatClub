@@ -1,5 +1,6 @@
 import { Deal } from '@/data/types'
 import { formatDealTimeWithPrefix } from '@/utils'
+import { LightningIcon, ClockIcon } from '@/components/common/Icons'
 import './DealCard.css'
 
 interface DealCardProps {
@@ -7,7 +8,7 @@ interface DealCardProps {
 }
 
 export const DealCard = ({ deal }: DealCardProps) => {
-const dealTime = formatDealTimeWithPrefix(deal);
+    const dealTime = formatDealTimeWithPrefix(deal)
 
     return (
         <div className="deal-card">
@@ -15,7 +16,8 @@ const dealTime = formatDealTimeWithPrefix(deal);
                 <div className="deal-card-discount-section">
                     {deal.lightning === 'true' && (
                         <span className="deal-lightning-badge">
-                            ⚡ Lightning Deal
+                            <LightningIcon />
+                            Lightning Deal
                         </span>
                     )}
                     <span className="deal-discount-text">
@@ -24,25 +26,17 @@ const dealTime = formatDealTimeWithPrefix(deal);
                 </div>
             </div>
 
-            <div className="deal-card-details">
-                <div className="deal-detail-row">
-                    <span className="deal-detail-icon">
-                        {deal.dineIn === 'true' ? '🍽️' : '🥡'}
-                    </span>
-                    <span>
-                        {deal.dineIn === 'true' ? 'Dine In' : 'Takeaway'}
-                    </span>
+            <div className="deal-card-body">
+                <div className="deal-card-details">
+                    <div className="deal-detail-row">
+                        <span className="deal-time-text">{dealTime}</span>
+                    </div>
+
+                    <p className="deal-quantity">{deal.qtyLeft} Deals Left</p>
                 </div>
 
-                <div className="deal-detail-row">
-                    <span className="deal-detail-icon">⏰</span>
-                    <span className="deal-time-text">{dealTime}</span>
-                </div>
-
-                <p className="deal-quantity">{deal.qtyLeft} Deals Left</p>
+                <button className="deal-redeem-button">Redeem</button>
             </div>
-
-            <button className="deal-redeem-button">Redeem</button>
         </div>
     )
 }

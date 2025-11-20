@@ -3,6 +3,15 @@
 import { useParams, useRouter } from 'next/navigation'
 import { useRestaurantById } from '@/hooks'
 import { LoadingScreen, Logo } from '@/components/common'
+import {
+    MenuIcon,
+    PhoneIcon,
+    AddressIcon,
+    LocationIcon,
+    HeartIcon,
+    ArrowLeftIcon,
+    ClockIcon,
+} from '@/components/common/Icons'
 import { DealCard } from '@/components/restaurant'
 import { sortDealsByDiscount } from '@/utils'
 import './page.css'
@@ -44,21 +53,7 @@ export default function RestaurantDetailPage() {
                     className="back-button"
                     aria-label="Back"
                 >
-                    <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M19 12H5M5 12L12 19M5 12L12 5"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
+                    <ArrowLeftIcon />
                 </button>
                 <Logo />
                 <div className="back-button-spacer"></div>
@@ -76,6 +71,34 @@ export default function RestaurantDetailPage() {
                     />
                 </div>
 
+                <div className="restaurant-action-buttons">
+                    <button className="action-button" aria-label="View menu">
+                        <MenuIcon />
+                        <span>Menu</span>
+                    </button>
+                    <button
+                        className="action-button"
+                        aria-label="Call restaurant"
+                    >
+                        <PhoneIcon />
+                        <span>Call us</span>
+                    </button>
+                    <button
+                        className="action-button"
+                        aria-label="View location"
+                    >
+                        <LocationIcon />
+                        <span>Location</span>
+                    </button>
+                    <button
+                        className="action-button"
+                        aria-label="Add to favourites"
+                    >
+                        <HeartIcon />
+                        <span>Favourite</span>
+                    </button>
+                </div>
+
                 <div className="restaurant-detail-content">
                     <div className="restaurant-detail-header">
                         <h1 className="restaurant-detail-name">
@@ -90,21 +113,26 @@ export default function RestaurantDetailPage() {
 
                         <div className="restaurant-detail-info">
                             <p className="restaurant-info-text">
+                                <ClockIcon className="info-icon" />
                                 Hours: {restaurant.open} - {restaurant.close}
                             </p>
 
                             <p className="restaurant-info-text">
+                                <AddressIcon className="info-icon" />
                                 {restaurant.address1}, {restaurant.suburb}
                             </p>
                         </div>
+
+                        <div className="restaurant-detail-divider"></div>
                     </div>
 
-                    <div className="restaurant-detail-divider"></div>
-
-                    <h2 className="deals-section-title">Available Deals</h2>
-
-                    {sortedDeals.map((deal) => (
-                        <DealCard key={deal.objectId} deal={deal} />
+                    {sortedDeals.map((deal, index) => (
+                        <div key={deal.objectId}>
+                            {index > 0 && (
+                                <div className="deal-separator"></div>
+                            )}
+                            <DealCard deal={deal} />
+                        </div>
                     ))}
                 </div>
             </div>
