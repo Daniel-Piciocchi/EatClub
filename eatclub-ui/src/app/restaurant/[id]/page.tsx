@@ -2,14 +2,13 @@
 
 import { useParams, useRouter } from 'next/navigation'
 import { useRestaurantById } from '@/hooks'
-import { LoadingScreen, Logo } from '@/components/common'
+import { LoadingScreen, Header } from '@/components/common'
 import {
     MenuIcon,
     PhoneIcon,
     AddressIcon,
     LocationIcon,
     HeartIcon,
-    ArrowLeftIcon,
     ClockIcon,
 } from '@/components/common/Icons'
 import { DealCard } from '@/components/restaurant'
@@ -47,17 +46,8 @@ export default function RestaurantDetailPage() {
 
     return (
         <div className="restaurant-detail-page">
-            <div className="detail-logo-header">
-                <button
-                    onClick={() => router.back()}
-                    className="back-button"
-                    aria-label="Back"
-                >
-                    <ArrowLeftIcon />
-                </button>
-                <Logo />
-                <div className="back-button-spacer"></div>
-            </div>
+            <Header showBackButton onBack={() => router.back()} />
+
             <div className="restaurant-detail-container">
                 <div className="restaurant-image-wrapper">
                     <img

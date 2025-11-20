@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import { useRestaurants } from '@/hooks'
-import { LoadingScreen, Logo } from '@/components/common'
+import { LoadingScreen, Header } from '@/components/common'
 import { RestaurantCard, SearchFilter } from '@/components/home'
 import { sortRestaurantsByBestDeal, filterRestaurants } from '@/utils'
 import './page.css'
@@ -30,11 +30,8 @@ export default function HomePage() {
 
     return (
         <div className="home-page">
+            <Header />
             <div className="home-container">
-                <div className="home-header">
-                    <Logo />
-                </div>
-
                 <SearchFilter
                     searchQuery={searchQuery}
                     onSearchChange={setSearchQuery}
