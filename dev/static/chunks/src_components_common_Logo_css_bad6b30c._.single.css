@@ -1,0 +1,14 @@
+/* [project]/src/components/common/Logo.css [app-client] (css) */
+.logo {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.logo-image {
+  border-radius: 8px;
+  width: auto;
+  height: 40px;
+}
+
+/*# sourceMappingURL=src_components_common_Logo_css_bad6b30c._.single.css.map*/

@@ -1,0 +1,461 @@
+/* [project]/src/components/common/Logo.css [app-client] (css) */
+.logo {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.logo-image {
+  border-radius: 8px;
+  width: auto;
+  height: 40px;
+}
+
+/* [project]/src/components/common/LoadingScreen.css [app-client] (css) */
+.loading-screen {
+  background: #f5f5f5;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  display: flex;
+}
+
+.loading-content {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  display: flex;
+}
+
+.loading-dots {
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.loading-dot {
+  background: #e63946;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  animation: 1.4s ease-in-out infinite bounce;
+}
+
+.loading-dot:first-child {
+  animation-delay: 0s;
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.loading-dot:nth-child(3) {
+  animation-delay: .4s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  40% {
+    opacity: .7;
+    transform: translateY(-20px);
+  }
+}
+
+/* [project]/src/components/common/Header.css [app-client] (css) */
+.header {
+  background: none;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.header-content {
+  justify-content: space-between;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+}
+
+.header-back-button {
+  cursor: pointer;
+  color: #333;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  transition: all .2s;
+  display: flex;
+}
+
+.header-back-button:hover {
+  color: #e63946;
+  background: #f5f5f5;
+}
+
+.header-back-button:active {
+  transform: scale(.95);
+}
+
+.header-spacer {
+  width: 40px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    z-index: 100;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 4px #0000001a;
+  }
+}
+
+/* [project]/src/components/restaurant/DealCard.css [app-client] (css) */
+.deal-card {
+  background: #fff;
+  border: none;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
+.deal-card-header {
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.deal-card-discount-section {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.deal-lightning-badge {
+  color: #fff;
+  background: #ff6b6b;
+  border-radius: 6px;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+}
+
+.deal-discount-text {
+  color: #e63946;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.deal-card-body {
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  display: flex;
+}
+
+.deal-card-details {
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
+  display: flex;
+}
+
+.deal-detail-row {
+  color: #666;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  display: flex;
+}
+
+.deal-detail-icon {
+  color: #666;
+  flex-shrink: 0;
+}
+
+.deal-time-text {
+  color: #666;
+  font-size: 14px;
+}
+
+.deal-quantity {
+  color: #999;
+  margin: 0;
+  font-size: 13px;
+}
+
+.deal-redeem-button {
+  color: #e63946;
+  cursor: pointer;
+  white-space: nowrap;
+  background: #fff;
+  border: 2px solid #e63946;
+  border-radius: 24px;
+  flex-shrink: 0;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.deal-redeem-button:hover {
+  color: #fff;
+  background: #e63946;
+}
+
+.deal-redeem-button:active {
+  transform: scale(.98);
+}
+
+.restaurant-card {
+  animation: .5s ease-out fadeInUp;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lightning-badge {
+  animation: 2s ease-in-out infinite pulse-lightning;
+}
+
+@keyframes pulse-lightning {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.restaurant-card-deal-badge {
+  animation: .4s ease-out slideInLeft;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.deal-card {
+  animation: .4s ease-out fadeInUp;
+}
+
+.deal-lightning-badge {
+  animation: 2s ease-in-out infinite pulse-glow;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 #ff6b6b66;
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px #ff6b6b00;
+  }
+}
+
+@media (max-width: 480px) {
+  .deal-card-body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .deal-redeem-button {
+    width: 100%;
+  }
+}
+
+/* [project]/src/app/restaurant/[id]/page.css [app-client] (css) */
+.restaurant-detail-page {
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.restaurant-detail-container {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: 0 2px 8px #0000001a;
+}
+
+.deal-separator {
+  background: #e5e7eb;
+  height: 1px;
+  margin: 0;
+}
+
+.restaurant-image-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.restaurant-detail-image {
+  object-fit: cover;
+  width: 100%;
+  height: 300px;
+  display: block;
+}
+
+.restaurant-action-buttons {
+  background: #fff;
+  border-bottom: 1px solid #d0d0d0;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  display: grid;
+}
+
+.action-button {
+  cursor: pointer;
+  color: #666;
+  background: none;
+  border: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 8px;
+  font-size: 12px;
+  transition: all .2s;
+  display: flex;
+}
+
+.action-button:last-child {
+  border-right: none;
+}
+
+.action-button:hover {
+  color: #e63946;
+  background: #f9f9f9;
+}
+
+.action-button:active {
+  transform: scale(.98);
+}
+
+.restaurant-detail-content {
+  padding: 24px 20px;
+}
+
+.restaurant-detail-header {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.restaurant-detail-name {
+  color: #1a1a1a;
+  margin: 0 0 12px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.restaurant-detail-cuisines {
+  color: #999;
+  margin: 0 0 20px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.restaurant-detail-divider {
+  background: #e5e7eb;
+  height: 1px;
+  margin: 20px 0 12px;
+}
+
+.restaurant-detail-info {
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.restaurant-info-text {
+  color: #1a1a1a;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+}
+
+.info-icon {
+  color: #666;
+  flex-shrink: 0;
+}
+
+.deals-section-title {
+  color: #1a1a1a;
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.error-container, .not-found-container {
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+}
+
+.error-message, .not-found-message {
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .restaurant-detail-image {
+    height: 400px;
+  }
+
+  .restaurant-detail-content {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .action-button {
+    padding: 12px 6px;
+    font-size: 11px;
+  }
+}
+
+/*# sourceMappingURL=src_bba88ea7._.css.map*/

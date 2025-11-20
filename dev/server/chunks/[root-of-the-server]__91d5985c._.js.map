@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///Users/Dan_1/repos/eatclub/eatclub-ui/src/app/api/restaurants/route.ts"],"sourcesContent":["import { NextResponse } from 'next/server'\n\nexport async function GET() {\n    try {\n        const response = await fetch(\n            'https://eccdn.com.au/misc/challengedata.json'\n        )\n\n        if (!response.ok) {\n            throw new Error('Failed to fetch restaurants')\n        }\n\n        const data = await response.json()\n        return NextResponse.json(data)\n    } catch (error) {\n        return NextResponse.json(\n            { error: 'Failed to fetch restaurants' },\n            { status: 500 }\n        )\n    }\n}\n"],"names":[],"mappings":";;;;AAAA;;AAEO,eAAe;IAClB,IAAI;QACA,MAAM,WAAW,MAAM,MACnB;QAGJ,IAAI,CAAC,SAAS,EAAE,EAAE;YACd,MAAM,IAAI,MAAM;QACpB;QAEA,MAAM,OAAO,MAAM,SAAS,IAAI;QAChC,OAAO,gJAAY,CAAC,IAAI,CAAC;IAC7B,EAAE,OAAO,OAAO;QACZ,OAAO,gJAAY,CAAC,IAAI,CACpB;YAAE,OAAO;QAA8B,GACvC;YAAE,QAAQ;QAAI;IAEtB;AACJ"}}]
+}
