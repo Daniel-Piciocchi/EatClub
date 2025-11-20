@@ -122,15 +122,11 @@ export default function RestaurantDetailPage() {
                                 {restaurant.address1}, {restaurant.suburb}
                             </p>
                         </div>
-
-                        <div className="restaurant-detail-divider"></div>
                     </div>
 
-                    {sortedDeals.map((deal, index) => (
+                    {sortedDeals.map((deal) => (
                         <div key={deal.objectId}>
-                            {index > 0 && (
-                                <div className="deal-separator"></div>
-                            )}
+                            <div className="deal-separator"></div>
                             <DealCard deal={deal} />
                         </div>
                     ))}

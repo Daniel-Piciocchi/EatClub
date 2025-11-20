@@ -26,7 +26,7 @@
 
 .deal-separator {
     height: 1px;
-    background: #d0d0d0;
+    background: #e5e7eb;
     margin: 0;
 }
 
@@ -108,7 +108,7 @@
 
 .restaurant-detail-header {
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 0;
 }
 
 .restaurant-detail-name {
@@ -128,7 +128,7 @@
 .restaurant-detail-divider {
     height: 1px;
     background: #e5e7eb;
-    margin: 20px 0;
+    margin: 20px 0 12px 0;
 }
 
 .restaurant-detail-info {
@@ -136,6 +136,7 @@
     flex-direction: column;
     gap: 8px;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .restaurant-info-text {
