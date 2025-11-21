@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useMemo, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { RestaurantWithBestDeal } from '@/types'
 import { formatDealTime } from '@/utils'
@@ -11,12 +12,22 @@ interface RestaurantCardProps {
 
 export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
     const router = useRouter()
+    const imgRef = useRef<HTMLImageElement | null>(null)
 
     const handleClick = () => {
         router.push(`/restaurant/${restaurant.objectId}`)
     }
 
     const dealTime = formatDealTime(restaurant.bestDeal)
+
+    const placeholderSrc =
+        'data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"200\"%3E%3Crect width=\"400\" height=\"200\" fill=\"%23e5e7eb\"/%3E%3Ctext x=\"50%25\" y=\"50%25\" dominant-baseline=\"middle\" text-anchor=\"middle\" fill=\"%239ca3af\" font-family=\"sans-serif\" font-size=\"14\"%3EImage unavailable%3C/text%3E%3C/svg%3E'
+
+    useEffect(() => {
+        if (imgRef.current) {
+            imgRef.current.src = restaurant.imageLink || placeholderSrc
+        }
+    }, [restaurant.imageLink])
 
     // Check what dining options are available
     const hasDineIn = restaurant.deals.some((deal) => deal.dineIn === 'true')
@@ -37,12 +48,13 @@ export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
         <div className="restaurant-card" onClick={handleClick}>
             <div className="restaurant-card-image-container">
                 <img
-                    src={restaurant.imageLink}
+                    ref={imgRef}
+                    src={placeholderSrc}
                     alt={restaurant.name}
                     className="restaurant-card-image"
                     onError={(e) => {
-                        e.currentTarget.src =
-                            'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="200"%3E%3Crect width="400" height="200" fill="%23e5e7eb"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-family="sans-serif" font-size="14"%3EImage unavailable%3C/text%3E%3C/svg%3E'
+                        e.currentTarget.onerror = null
+                        e.currentTarget.src = placeholderSrc
                     }}
                 />
                 <div className="restaurant-card-deal-badge">
