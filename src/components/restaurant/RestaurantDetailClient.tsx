@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import {
     MenuIcon,
@@ -10,7 +10,7 @@ import {
     HeartIcon,
     ClockIcon,
 } from '@/components/common/Icons'
-import { Header } from '@/components/common'
+import { Header, FoodPlaceholder } from '@/components/common'
 import { DealCard } from './DealCard'
 import { sortDealsByDiscount } from '@/utils'
 import { Restaurant } from '@/types'
@@ -23,20 +23,24 @@ export const RestaurantDetailClient = ({
     restaurant,
 }: RestaurantDetailClientProps) => {
     const router = useRouter()
+    const [imageFailed, setImageFailed] = useState(false)
+    const [imageLoaded, setImageLoaded] = useState(false)
     const imgRef = useRef<HTMLImageElement | null>(null)
     const sortedDeals = useMemo(
         () => sortDealsByDiscount(restaurant.deals),
         [restaurant.deals]
     )
 
-    const placeholderSrc =
-        'data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"200\"%3E%3Crect width=\"400\" height=\"200\" fill=\"%23e5e7eb\"/%3E%3Ctext x=\"50%25\" y=\"50%25\" dominant-baseline=\"middle\" text-anchor=\"middle\" fill=\"%239ca3af\" font-family=\"sans-serif\" font-size=\"14\"%3EImage unavailable%3C/text%3E%3C/svg%3E'
-
     useEffect(() => {
         if (imgRef.current) {
-            imgRef.current.src = restaurant.imageLink || placeholderSrc
+            imgRef.current.src = restaurant.imageLink ?? ''
+            setImageFailed(false)
+            setImageLoaded(false)
         }
     }, [restaurant.imageLink])
+
+    const shouldShowImage = !!restaurant.imageLink && !imageFailed
+    const showPlaceholder = !restaurant.imageLink || imageFailed || !imageLoaded
 
     return (
         <div className="restaurant-detail-page">
@@ -44,16 +48,29 @@ export const RestaurantDetailClient = ({
 
             <div className="restaurant-detail-container">
                 <div className="restaurant-image-wrapper">
-                    <img
-                        ref={imgRef}
-                        src={placeholderSrc}
-                        alt={restaurant.name}
-                        className="restaurant-detail-image"
-                        onError={(e) => {
-                            e.currentTarget.onerror = null
-                            e.currentTarget.src = placeholderSrc
-                        }}
-                    />
+                    {shouldShowImage ? (
+                        <img
+                            ref={imgRef}
+                            src={restaurant.imageLink}
+                            alt={restaurant.name}
+                            className={`restaurant-detail-image ${
+                                imageLoaded
+                                    ? 'restaurant-detail-image--visible'
+                                    : 'restaurant-detail-image--hidden'
+                            }`}
+                            onLoad={() => setImageLoaded(true)}
+                            onError={(e) => {
+                                e.currentTarget.onerror = null
+                                setImageFailed(true)
+                            }}
+                        />
+                    ) : null}
+                    {showPlaceholder && (
+                        <FoodPlaceholder
+                            cuisines={restaurant.cuisines}
+                            className="restaurant-detail-image restaurant-detail-image--visible"
+                        />
+                    )}
                 </div>
 
                 <div className="restaurant-action-buttons">

@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { RestaurantWithBestDeal } from '@/types'
 import { formatDealTime } from '@/utils'
+import { FoodPlaceholder } from '@/components/common'
 import './RestaurantCard.css'
 
 interface RestaurantCardProps {
@@ -12,6 +13,7 @@ interface RestaurantCardProps {
 
 export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
     const router = useRouter()
+    const [imageFailed, setImageFailed] = useState(false)
     const imgRef = useRef<HTMLImageElement | null>(null)
 
     const handleClick = () => {
@@ -26,6 +28,7 @@ export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
     useEffect(() => {
         if (imgRef.current) {
             imgRef.current.src = restaurant.imageLink || placeholderSrc
+            setImageFailed(false)
         }
     }, [restaurant.imageLink])
 
@@ -47,16 +50,21 @@ export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
     return (
         <div className="restaurant-card" onClick={handleClick}>
             <div className="restaurant-card-image-container">
-                <img
-                    ref={imgRef}
-                    src={placeholderSrc}
-                    alt={restaurant.name}
-                    className="restaurant-card-image"
-                    onError={(e) => {
-                        e.currentTarget.onerror = null
-                        e.currentTarget.src = placeholderSrc
-                    }}
-                />
+                {imageFailed ? (
+                    <FoodPlaceholder cuisines={restaurant.cuisines} />
+                ) : (
+                    <img
+                        ref={imgRef}
+                        src={placeholderSrc}
+                        alt={restaurant.name}
+                        className="restaurant-card-image"
+                        onError={(e) => {
+                            e.currentTarget.onerror = null
+                            e.currentTarget.src = placeholderSrc
+                            setImageFailed(true)
+                        }}
+                    />
+                )}
                 <div className="restaurant-card-deal-badge">
                     <span className="restaurant-card-deal-badge-discount">
                         {restaurant.bestDeal.discount}% off

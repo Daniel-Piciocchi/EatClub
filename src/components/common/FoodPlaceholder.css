@@ -1,0 +1,72 @@
+.food-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.food-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.food-placeholder-icon {
+    position: relative;
+    z-index: 1;
+    color: rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (min-width: 768px) {
+    .food-placeholder {
+        min-height: 250px;
+    }
+
+    .food-placeholder.restaurant-detail-image {
+        height: 400px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .food-placeholder {
+        min-height: 280px;
+    }
+
+    .food-placeholder.restaurant-detail-image {
+        height: 400px;
+    }
+}
+
+.food-placeholder.restaurant-detail-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px 12px 0 0;
+}
