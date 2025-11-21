@@ -16,7 +16,7 @@
 
 .deal-separator {
     height: 1px;
-    background: #e5e7eb;
+    background: rgba(0, 0, 0, 0.06);
     margin: 0;
 }
 
@@ -49,7 +49,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
-    border-bottom: 1px solid #d0d0d0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     background: white;
     animation: fadeInUp 0.45s ease-out;
 }
@@ -108,7 +108,7 @@
 
 .restaurant-detail-divider {
     height: 1px;
-    background: #e5e7eb;
+    background: rgba(0, 0, 0, 0.06);
     margin: 20px 0 12px 0;
 }
 
