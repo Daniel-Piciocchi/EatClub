@@ -1,4 +1,4 @@
-import { Restaurant, Deal, RestaurantWithBestDeal } from '@/data/types'
+import { Restaurant, Deal, RestaurantWithBestDeal } from '@/types'
 
 export const getBestDeal = (restaurant: Restaurant): Deal => {
     if (restaurant.deals.length === 0) {

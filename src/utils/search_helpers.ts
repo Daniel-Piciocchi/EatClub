@@ -1,4 +1,4 @@
-import { Restaurant } from '@/data/types'
+import { Restaurant } from '@/types'
 
 export const filterRestaurants = (
     restaurants: Restaurant[],

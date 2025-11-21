@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { RestaurantWithBestDeal } from '@/data/types'
+import { RestaurantWithBestDeal } from '@/types'
 import { formatDealTime } from '@/utils'
 import './RestaurantCard.css'
 

@@ -1,3 +1,3 @@
-export * from './sortingHelpers'
-export * from './searchHelpers'
-export * from './dealHelpers'
+export * from './sorting_helpers'
+export * from './search_helpers'
+export * from './deal_helpers'

@@ -1,4 +1,4 @@
-import { Deal } from '@/data/types'
+import { Deal } from '@/types'
 
 export const formatDealTime = (deal: Deal): string => {
     if (deal.open && deal.close) {

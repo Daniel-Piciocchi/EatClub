@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { Restaurant, RestaurantsApiResponse } from '@/data/types'
+import { Restaurant, RestaurantsApiResponse } from '@/types'
 import { API_URL } from '@/constants'
 
 interface RestaurantStore {

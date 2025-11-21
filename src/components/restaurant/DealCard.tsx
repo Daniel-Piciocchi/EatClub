@@ -1,4 +1,4 @@
-import { Deal } from '@/data/types'
+import { Deal } from '@/types'
 import { formatDealTimeWithPrefix } from '@/utils'
 import { LightningIcon, ClockIcon } from '@/components/common/Icons'
 import './DealCard.css'

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useRestaurantStore } from '@/store/restaurantStore'
+import { useRestaurantStore } from '@/store/restaurant_store'
 
 export const useRestaurants = () => {
     const {
