@@ -25,6 +25,7 @@ export const HomePageClient = ({ restaurants }: HomePageClientProps) => {
         }
 
         window.sessionStorage.setItem('ec_seen_intro', 'true')
+        // brief intro screen shown only on first visit
         const timer = setTimeout(() => setShowIntroLoading(false), 3000)
         return () => clearTimeout(timer)
     }, [])

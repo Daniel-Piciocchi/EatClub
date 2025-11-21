@@ -21,9 +21,6 @@ export const useRestaurantStore = create<RestaurantStore>((set, get) => ({
     fetchRestaurants: async () => {
         set({ isLoading: true, error: null })
 
-        // for demo purposes to show what loading screen looks like
-        await new Promise((resolve) => setTimeout(resolve, 3000))
-
         try {
             const response = await fetch(API_URL)
             if (!response.ok) {
