@@ -1,7 +1,7 @@
 'use client'
 
 import { Logo } from './Logo'
-import { ArrowLeftIcon } from './Icons'
+import { ArrowLeftIcon, ProfileIcon, MenuToggleIcon } from './Icons'
 import './Header.css'
 
 interface HeaderProps {
@@ -16,16 +16,32 @@ export const Header = ({ showBackButton = false, onBack }: HeaderProps) => {
                 {showBackButton ? (
                     <button
                         onClick={onBack}
-                        className="header-back-button"
+                        className="header-back-button header-back-button--mobile"
                         aria-label="Back"
                     >
                         <ArrowLeftIcon />
                     </button>
                 ) : (
-                    <div className="header-spacer"></div>
+                    <button
+                        className="header-icon-button"
+                        aria-label="Profile"
+                        type="button"
+                    >
+                        <ProfileIcon />
+                    </button>
                 )}
                 <Logo />
-                <div className="header-spacer"></div>
+                {showBackButton ? (
+                    <div className="header-spacer"></div>
+                ) : (
+                    <button
+                        className="header-icon-button"
+                        aria-label="Menu"
+                        type="button"
+                    >
+                        <MenuToggleIcon />
+                    </button>
+                )}
             </div>
         </header>
     )
