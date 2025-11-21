@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EatClub UI
 
-## Getting Started
+Next.js (App Router) front-end for browsing EatClub restaurant deals. Home lists venues with their best available discount and supports searching by name/cuisine. Detail pages show restaurant info, available deals, and quick actions.
 
-First, run the development server:
+## Stack
+- Next.js 16 + React 19 (TypeScript)
+- App Router with server components plus client islands
+- Styling with plain CSS files
+- Zustand for a lightweight client-side restaurant cache
 
+## App structure (key paths)
+- `src/app/page.tsx` — server route for the home feed; fetches restaurants then renders `HomePageClient`.
+- `src/components/home` — search, cards, and the home client shell.
+- `src/app/restaurant/[id]/page.tsx` — server route for a restaurant detail page; renders `RestaurantDetailClient`.
+- `src/components/restaurant` — detail UI (hero, action bar, deal list).
+- `src/app/api/restaurants/route.ts` — API route proxying the challenge data from eccdn.
+- `src/utils` — fetching, search, sorting, and deal-format helpers.
+- `src/store/restaurant_store.ts` — Zustand store used by hooks in `src/hooks`.
+
+## Data flow
+- `API_URL` points to `/api/restaurants`; that route fetches `https://eccdn.com.au/misc/challengedata.json`.
+- `fetchRestaurants` / `fetchRestaurantById` (in `src/utils/restaurant_service.ts`) power the server routes. The client hook/store (`useRestaurants`, `useRestaurantStore`) can also fetch with a short intro delay to show the branded loader.
+- If you need to force absolute URLs in non-Vercel environments, set `NEXT_PUBLIC_SITE_URL` or `VERCEL_URL`.
+
+## Running locally
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Lint:
+```bash
+npm run lint
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Build for production:
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Feature notes
+- Home: best-deal sorting (discount, lightning flag, then qty), search by name/cuisine, image placeholders for failures.
+- Detail: hero image with graceful fallback, action bar, hours/address, and deals list with separators.
+- Loading/error states: intro loader on first visit; clear error messaging for fetch failures.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Future tweaks
+- Wire action buttons to real menu/phone/location targets.
+- Add tests around sorting/filtering and API error handling.
+- Tune image aspect handling per source (current hero uses 16:9 with min/max height bounds).
