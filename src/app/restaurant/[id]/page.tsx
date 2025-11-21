@@ -1,5 +1,5 @@
 import { RestaurantDetailClient } from '@/components/restaurant'
-import { fetchRestaurantById } from '@/utils/restaurant_service'
+import { fetchRestaurantById } from '@/utils/restaurant-service'
 import './page.css'
 
 export default async function RestaurantDetailPage({

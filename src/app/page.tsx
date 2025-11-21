@@ -1,5 +1,5 @@
 import { HomePageClient } from '@/components/home'
-import { fetchRestaurants } from '@/utils/restaurant_service'
+import { fetchRestaurants } from '@/utils/restaurant-service'
 import './page.css'
 
 export default async function HomePage() {

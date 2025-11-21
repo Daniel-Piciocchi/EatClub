@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
-import { useRestaurantStore } from '@/store/restaurant_store'
+import { useRestaurantStore } from '@/store/restaurant-store'
 
-export const useRestaurants = () => {
+export const useRestaurantById = (id: string) => {
     const {
-        getAllRestaurants,
+        getRestaurantById,
         isLoading,
         error,
         fetchRestaurants,
@@ -16,11 +16,7 @@ export const useRestaurants = () => {
         }
     }, [restaurantIds.length, isLoading, error, fetchRestaurants])
 
-    const restaurants = getAllRestaurants()
+    const restaurant = getRestaurantById(id)
 
-    const validRestaurants = restaurants.filter(
-        (r) => r.deals && r.deals.length > 0
-    )
-
-    return { restaurants: validRestaurants, isLoading, error }
+    return { restaurant, isLoading, error }
 }

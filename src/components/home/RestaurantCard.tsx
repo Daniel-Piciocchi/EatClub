@@ -47,6 +47,8 @@ export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
         return ''
     }
 
+    const diningOptions = getDiningOptions()
+
     return (
         <div className="restaurant-card" onClick={handleClick}>
             <div className="restaurant-card-image-container">
@@ -86,9 +88,9 @@ export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
                     {restaurant.cuisines.join(', ')}
                 </p>
 
-                {getDiningOptions() && (
+                {diningOptions && (
                     <p className="restaurant-card-dining-options">
-                        {getDiningOptions()}
+                        {diningOptions}
                     </p>
                 )}
             </div>
