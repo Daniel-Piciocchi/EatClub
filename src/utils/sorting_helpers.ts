@@ -6,12 +6,12 @@ export const getBestDeal = (restaurant: Restaurant): Deal => {
     }
 
     const sortedDeals = [...restaurant.deals].sort((a, b) => {
+        const discountDiff = Number(b.discount) - Number(a.discount)
+        if (discountDiff !== 0) return discountDiff
+
         if (a.lightning !== b.lightning) {
             return a.lightning === 'true' ? -1 : 1
         }
-
-        const discountDiff = Number(b.discount) - Number(a.discount)
-        if (discountDiff !== 0) return discountDiff
 
         return Number(b.qtyLeft) - Number(a.qtyLeft)
     })
@@ -35,12 +35,12 @@ export const sortRestaurantsByBestDeal = (
         const dealA = a.bestDeal
         const dealB = b.bestDeal
 
+        const discountDiff = Number(dealB.discount) - Number(dealA.discount)
+        if (discountDiff !== 0) return discountDiff
+
         if (dealA.lightning !== dealB.lightning) {
             return dealA.lightning === 'true' ? -1 : 1
         }
-
-        const discountDiff = Number(dealB.discount) - Number(dealA.discount)
-        if (discountDiff !== 0) return discountDiff
 
         return Number(dealB.qtyLeft) - Number(dealA.qtyLeft)
     })
